@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Reset Links</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #cc9966;
+            color: white;
+            padding: 10px 15px;
+            margin: 10px 5px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .note {
+            background-color: #f8f8f8;
+            border-left: 4px solid #cc9966;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard Testing Links</h1>
+    
+    <p>Use these links to test the dashboard with various reset options:</p>
+    
+    <div>
+        <a href="dashboard.html?reset=true" class="btn">Reset Conversation</a>
+        <a href="dashboard.html?refresh=true&reset=true" class="btn">Hard Refresh + Reset</a>
+        <a href="http://localhost:3000/dashboard.html" class="btn">Regular Dashboard</a>
+    </div>
+    
+    <div class="note">
+        <p><strong>Note:</strong> These links work with the local development server running on port 3000.</p>
+        <p>Start the server with: <code>npx serve</code></p>
+    </div>
+</body>
+</html> 

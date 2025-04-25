@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Wedding Speech Writer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-page">
+            <div class="auth-form-container">
+                <h1>Login</h1>
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+                <div class="auth-links">
+                    <a href="reset-link.html">Forgot Password?</a>
+                    <span class="separator">•</span>
+                    <a href="register.html">Need an account? Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initAuth } from './js/auth/auth-ui.js';
+        
+        // Initialize authentication
+        document.addEventListener('DOMContentLoaded', () => {
+            initAuth();
+        });
+    </script>
+</body>
+</html> 

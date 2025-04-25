@@ -1,0 +1,1192 @@
+ED DAVIES – SPEC VIA GROK
+
+Module 1: Homepage and account creation
+
+Functional Specification for Wedding Speech Writing Assistant
+Module 1: Homepage and Account Creation Functionality
+Version: 1.0
+Date: April 13, 2025
+Prepared by: Assistant
+1. Introduction
+This module specifies the requirements for the Homepage and Account Creation Functionality of the Wedding Speech Writing Assistant. The homepage serves as the primary entry point for users, designed to be engaging and mobile-friendly, with a focus on encouraging sign-ups. The account creation process is simple, requiring minimal user input, and includes a login mechanism for returning users. This module is self-contained, with clearly defined interfaces to ensure it can be swapped or modified independently while integrating with other modules of the application.
+2. Scope
+This specification covers:
+•	The homepage layout, including its visual components (hero section, benefits, testimonials, footer, and login button).
+•	The account creation process (sign-up with first name, email and password).
+•	The login functionality for returning users (login with email and password)
+•	All outputs and interfaces to support modularity and integration.
+Only the requirements explicitly stated by the user are included, with no assumptions about other modules (e.g., speech generation or editing).
+3. Functional Requirements
+3.1 Homepage
+The homepage is the main landing page for users, optimized for mobile devices while remaining functional on desktops. It follows a specific structure with interactive elements to drive user engagement and account creation.
+3.1.1 Structure and Components
+The homepage is composed of the following sections, presented in order:
+1.	Header/Hero Section: 
+o	Description: A full-screen section at the top of the page to capture user attention.
+o	Visuals: 
+	Dynamic Background Image: A full-screen image that rotates or subtly animates (e.g., a slideshow of wedding-speech related) to create an engaging first impression. The image must scale appropriately for mobile and desktop displays.
+o	Text: 
+	Title: A bold, prominent headline (e.g., "Craft Your Perfect Wedding Speech"). Font size and weight should emphasize importance, optimized for readability on small screens.
+	Subtitle: A normal-font, concise description below the title (e.g., "Create heartfelt speeches with ease in minutes"). Smaller font size but clear and legible.
+o	Action: 
+	Start Now Button: A clickable button below the subtitle, styled to stand out (e.g., bright color, rounded edges). Clicking this button directs users to the account creation form (see Section 3.2).
+2.	Benefits Section: 
+o	Description: A section highlighting the unique selling propositions (USPs) of the service to convince users of its value.
+o	Content: 
+	Three short blocks of text, each describing a benefit or USP (e.g., "Easy to use," "Personalized speeches," "Perfect for any role").
+	Each block should be concise (1-2 sentences) and visually distinct (e.g., displayed in a grid or card layout on desktop, stacked vertically on mobile).
+o	Action: 
+	Start Now Button: A second clickable button below the benefits section, identical in style to the hero section’s button, linking to the account creation form.
+3.	Testimonials Section: 
+o	Description: A section to build trust by showcasing feedback from previous users.
+o	Content: 
+	Two testimonials, each including: 
+	Picture: A small, circular or square image of the user (e.g., a headshot or avatar). Images should be optimized for quick loading on mobile.
+	Comment: A short quote (1-2 sentences) from the user (e.g., “This made my best man speech a hit!”).
+	Testimonials should be visually appealing, possibly in a side-by-side layout on desktop or stacked on mobile.
+o	Action: 
+	Start Now Button: A third clickable button below the testimonials, matching the style of the previous buttons, linking to the account creation form.
+4.	Footer: 
+o	Description: A standard webpage footer to provide basic navigation and information.
+o	Content: 
+	Links to common pages (e.g., “About,” “Contact,” “Privacy Policy,” “Terms of Service”).
+	Copyright notice (e.g., “© 2025 Wedding Speech Assistant”).
+	Optional social media icons if applicable.
+o	Design: Simple and unobtrusive, ensuring it doesn’t distract from the main content. Must be responsive for mobile and desktop.
+5.	Login Button: 
+o	Description: A persistent button for returning users to access their personal space.
+o	Placement: Located at the very top of the homepage (e.g., top-right corner), visible on all screen sizes.
+o	Design: A small, clearly labeled button (e.g., “Log In”) that opens a login form or modal when clicked (see Section 3.3).
+o	Behavior: Should remain accessible even when scrolling on mobile devices (e.g., part of a sticky header).
+3.1.2 Design Considerations
+•	Mobile-First: 
+o	The homepage is primarily designed for mobile devices, ensuring all elements (text, images, buttons) are touch-friendly and legible on small screens.
+o	Layouts should stack vertically on mobile, with no horizontal scrolling required.
+o	Buttons should have sufficient padding for easy tapping (e.g., minimum 44x44 pixels per touch target).
+•	Desktop Compatibility: 
+o	While mobile-first, the homepage must adapt to desktop screens using responsive design (e.g., wider layouts, side-by-side testimonials, or grid-based benefits).
+o	Background images and text should scale proportionally to avoid distortion.
+•	Accessibility: 
+o	High-contrast colors for text and buttons to ensure readability.
+o	Alt text for images (e.g., background and testimonial pictures).
+o	Keyboard navigation support for buttons and links.
+o	ARIA labels for dynamic elements (e.g., login modal).
+3.1.3 Outputs
+•	Rendered Homepage: 
+o	A fully functional webpage viewable in a browser, accessible via a URL 
+o	Responsive across devices (mobile, tablet, desktop).
+•	Navigation Events: 
+o	Clicking any “Start Now” button triggers a transition to the account creation form.
+o	Clicking the “Log In” button opens the login form.
+o	Footer links (if implemented) navigate to their respective pages.
+3.2 Account Creation
+The account creation process allows new users to sign up for the service with minimal input, ensuring a frictionless onboarding experience.
+3.2.1 Process
+•	Input: 
+o	Users provide: 
+	First Name: A single text field for the user’s first name (e.g., “John”).
+	Email Address: A single text field for a valid email (e.g., “john@example.com”).
+o	No additional fields (e.g., password, last name) are required at this stage.
+•	Form Design: 
+o	A simple form, accessible after clicking any “Start Now” button.
+o	Displayed as: 
+	A new page (e.g., /signup) or
+	A modal/pop-up on the homepage.
+o	Includes: 
+	Two input fields (first name, email).
+	A “Submit” or “Sign Up” button to complete the process.
+	Basic validation (e.g., ensure email format is valid, first name is not empty).
+•	Submission: 
+o	Upon submitting valid input, the system: 
+	Creates a new user account in the backend.
+	Stores the first name and email securely.
+	Redirects the user to their personal space (a separate module, not specified here).
+o	On-Screen Confirmation and then redirect to the personal space serves as implicit confirmation.
+3.2.2 Outputs
+•	User Account: 
+o	A backend record containing: 
+	First name (string).
+	Email address (string, unique identifier).
+o	Stored securely (e.g., in a database, encrypted if necessary).
+•	Navigation Event: 
+o	Successful submission redirects to the user’s personal space (URL TBD, e.g., /dashboard).
+•	Error Messages (if applicable): 
+o	Invalid email format: “Please enter a valid email address.”
+o	Empty first name: “Please enter your first name.”
+o	Duplicate email: “This email is already registered.”
+3.3 Login Functionality
+Returning users can access their personal space via a login mechanism on the homepage.
+3.3.1 Process
+•	Access: 
+o	Users click the “Log In” button at the top of the homepage.
+o	This opens a login form, displayed as: 
+	A modal/pop-up or
+	A new page (e.g., /login).
+•	Input: 
+o	Users enter: 
+	Email Address: The email used during sign-up.
+	First Name: Used as a secondary identifier (in lieu of a password, per requirements).
+o	Form includes: 
+	Two input fields (email, first name).
+	A “Log In” button to submit.
+	Basic validation (e.g., ensure fields are not empty).
+•	Submission: 
+o	Upon submitting valid credentials, the system: 
+	Verifies the email and first name against stored user data.
+	Redirects the user to their personal space if credentials match.
+o	If credentials are invalid, an error message is displayed (e.g., “Incorrect email or name”).
+3.3.2 Outputs
+•	Navigation Event: 
+o	Successful login redirects to the user’s personal space (URL TBD).
+•	Error Messages: 
+o	Invalid credentials: “Incorrect email or name.”
+o	Empty fields: “Please enter your email and name.”
+4. Non-Functional Requirements
+4.1 User Experience (UX)
+•	Mobile Optimization: 
+o	The homepage prioritizes mobile usability, with fast load times and touch-friendly interactions.
+o	Forms (sign-up and login) are simple and quick to complete on small screens.
+•	Intuitiveness: 
+o	Clear visual hierarchy (e.g., bold title, prominent buttons).
+o	Minimal steps for account creation and login.
+•	Consistency: 
+o	All “Start Now” buttons share the same design and behavior.
+o	Login button is always visible and accessible.
+4.2 Performance
+•	Load Time: 
+o	Homepage loads in under 3 seconds on mobile (4G connection).
+o	Background images are optimized (e.g., compressed, lazy-loaded).
+•	Form Submission: 
+o	Account creation and login requests process in under 2 seconds (assuming standard server response times).
+4.3 Security
+•	Data Storage: 
+o	User data (first name, email) is stored securely (e.g., encrypted database).
+o	No sensitive data (e.g., passwords) is collected, per requirements.
+•	Input Validation: 
+o	Sanitize inputs to prevent injection attacks (e.g., SQL, XSS).
+o	Validate email format on client and server sides.
+5. Interfaces
+To ensure modularity, this module exposes clear interfaces for integration with other parts of the application. These interfaces allow the module to be swapped or modified without affecting other components.
+5.1 Input Interfaces
+•	None: 
+o	The homepage is the entry point, so it does not receive direct input from other modules.
+o	User inputs (first name, email) are collected within this module via forms.
+5.2 Output Interfaces
+•	User Account Data: 
+o	Format: JSON object.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "firstName": "string",
+  "email": "string"
+}
+o	Purpose: Passed to the backend or other modules (e.g., personal space) after account creation or login.
+o	Access: Available via an API endpoint (e.g., POST /api/signup, POST /api/login).
+•	Navigation Events: 
+o	Account Creation Success: 
+	Redirects to personal space URL (e.g., /dashboard).
+	Passes user data (above) to the target module.
+o	Login Success: 
+	Redirects to personal space URL.
+	Passes user data to authenticate the session.
+•	Static Assets: 
+o	Background images, testimonial pictures, and footer links are exposed as static resources (e.g., /assets/images/hero1.jpg).
+o	Can be updated independently without altering module logic.
+5.3 External Dependencies
+•	Backend API (assumed, not specified): 
+o	Endpoints for: 
+	POST /api/signup: Create a new user.
+	POST /api/login: Authenticate a returning user.
+o	Expected to handle user data storage and session management.
+•	Routing: 
+o	The module assumes a routing system to handle navigation (e.g., to /signup, /login, /dashboard).
+•	Personal Space Module (not specified): 
+o	The redirect target after sign-up/login; must accept user data from this module.
+6. Technical Considerations
+These notes guide developers without prescribing implementation details, as coding is not part of this specification.
+•	Frontend Framework (suggested): 
+o	React, Vue.js, or similar for responsive, component-based UI.
+o	Tailwind CSS or Bootstrap for mobile-first styling.
+•	Image Handling: 
+o	Use responsive image formats for dynamic backgrounds.
+o	Lazy-load testimonial images to optimize performance.
+•	Form Validation: 
+o	Client-side validation for instant feedback (e.g., email regex).
+o	Server-side validation for security.
+•	Modularity: 
+o	Structure the homepage as a standalone component (e.g., Homepage.jsx).
+o	Separate sign-up and login forms as reusable components.
+o	Use environment variables for API URLs to allow swapping backends.
+7. Error Handling
+•	Homepage: 
+o	Image load failure: Fallback to a default background color or static image.
+o	Slow network: Display a loading spinner for dynamic content.
+•	Account Creation: 
+o	Invalid input: Display inline error messages below fields.
+o	Server error: Show a generic message (e.g., “Something went wrong, try again”).
+•	Login: 
+o	Invalid credentials: Display error message in the form.
+o	Server error: Same as above.
+8. Outputs Summary
+•	Homepage: 
+o	A responsive webpage (/) with hero section, benefits, testimonials, footer, and login button.
+o	Navigation to sign-up or login forms.
+•	Account Creation: 
+o	User account data (first name, email) stored in the backend.
+o	Redirect to personal space (no confirmation message).
+•	Login: 
+o	Authenticated session for valid credentials.
+o	Redirect to personal space.
+•	Files/Assets: 
+o	HTML/CSS/JS for the homepage.
+o	Image files for backgrounds and testimonials.
+o	API payloads for user data.
+9. Assumptions
+•	A backend exists to store user data and handle authentication.
+•	The personal space module (redirect target) will be defined separately.
+•	No password is required, as first name + email serve as credentials (per requirements).
+•	Footer links (e.g., “About”) point to placeholder pages unless other modules define them.
+10. Conclusion
+This specification defines Module 1: Homepage and Account Creation Functionality, exactly as requested. It includes a mobile-first homepage with a hero section, benefits, testimonials, footer, and login button, plus simple sign-up and login processes using first name and email. All outputs (webpage, user data, navigation events) and interfaces (API payloads, redirects) are specified to ensure modularity and compatibility with Cursor or similar tools. The module is self-contained, ready to integrate with future modules (e.g., personal space, speech generation) without overlap.
+
+
+
+
+
+
+
+
+
+
+
+
+Module 2: Personal space for users and info collection through writing assistant
+
+Functional Specification for Wedding Speech Writing Assistant
+Module 2: Personal Space and Writing Assistant (Info Collection)
+Version: 1.2
+Date: April 13, 2025
+Prepared by: Assistant
+1. Introduction
+This module specifies the requirements for the Personal Space and Writing Assistant (Info Collection) for registered users of the Wedding Speech Writing Assistant. The personal space serves as a private, user-specific area where users interact with a chat-based writing assistant to provide essential information and content for crafting their wedding speech. The assistant collects key details (e.g., user’s role, wedding date, style preferences) and real user stories/anecdotes, preparing the user to move to content creation (a separate module). This module is self-contained, with clearly defined interfaces to ensure modularity and ease of future changes.
+2. Scope
+This specification covers:
+•	The personal space interface, including a personalized greeting and display of past communication.
+•	The chat-based writing assistant for collecting essential information (user’s role in the wedding, wedding date, speech length recommendations with user confirmation, and style preferences) and user stories/anecdotes for speech content.
+•	The transition to the next phase (content creation, Module 3) after collecting all inputs.
+•	All inputs, outputs, and interfaces to support modularity and integration.
+Only the requirements explicitly stated are included, with no assumptions about other modules beyond the transition to Module 3.
+3. Functional Requirements
+3.1 Personal Space
+The personal space is a private area accessible only to registered users after logging in. It serves as the hub for interacting with the writing assistant and reviewing past interactions.
+3.1.1 Interface
+•	Greeting: 
+o	Displays a personalized message at the top of the personal space: “Hi [First Name]” (e.g., “Hi John”).
+o	The first name is retrieved from the user’s account data (provided by Module 1).
+•	Past Communication: 
+o	Displays all previous communication with the writing assistant, including: 
+	All text messages (assistant and user).
+	All audio files that are recorded by the user are transcribed while being recorded and shown as such in the frontend (no playback), .
+o	Presented in chronological order, identical to the original chat format (same bubble design, see Section 3.2.1).
+o	Available immediately upon login, evolving as new interactions occur but always showing the full history looking backward.
+•	Design: 
+o	A clean, minimal interface optimized for mobile and desktop.
+o	The greeting is prominent (e.g., larger font, bold).
+o	The chat interface (see Section 3.2) occupies the main area of the screen, with past communication scrollable above the active chat input.
+•	Accessibility: 
+o	The personal space is accessible only to authenticated users (via login from Module 1).
+o	A logout option is available (e.g., a button in the top-right corner) to return to the homepage.
+3.1.2 Outputs
+•	Rendered Personal Space: 
+o	A webpage or app view (e.g., /dashboard) displaying the greeting, past communication (text and audio), and chat interface.
+o	Responsive across devices (mobile, tablet, desktop).
+3.2 Writing Assistant (Info Collection)
+The writing assistant, named Ed Davies, uses a chat-based format to collect essential information and content from the user, preparing them for speech creation. The interaction is conversational, feeling like chatting with a good friend, and supports both text and audio input.
+3.2.1 Chat Interface
+•	Format: 
+o	A chat-like interface where the assistant sends messages/questions, and the user responds.
+o	Messages appear sequentially, mimicking a real-time conversation (e.g., assistant’s message appears, user responds, next message follows).
+o	User responses can be: 
+	Text Input: Typed into a text field.
+	Audio Input: Recorded via a microphone button, allowing users to speak their response (e.g., a “Record” button that captures audio and submits it as a file).
+o	Audio responses are transcribed (assumed backend capability) for processing and stored as playable files in the chat history.
+•	Design: 
+o	Assistant Messages: 
+	Appear on the left in a bubble style.
+	Each bubble includes an image of Ed Davies (e.g., a friendly headshot or avatar) to personalize the interaction, making it feel like chatting with a good friend.
+	Text is conversational and warm (e.g., “Hey, I’m excited to help you!”).
+o	User Messages: 
+	Appear on the right in a contrasting bubble style (no avatar for user).
+	Text responses display as typed.
+	Audio responses display as a playable audio player (e.g., a waveform with play/pause) with optional transcription below.
+o	A text input field and a microphone button are at the bottom for user replies.
+o	Mobile-friendly: Messages stack vertically, input field and buttons are touch-friendly.
+•	Tone: 
+o	Friendly, encouraging, and personal, as if speaking with a close friend (e.g., “Awesome, let’s make this speech amazing!”).
+3.2.2 Information and Content Collection Process
+The assistant asks a series of questions to gather essential details and content, in the following order:
+1.	User’s Role in the Wedding: 
+o	Question: A prompt to establish the user’s relationship to the wedding (e.g., “Who are you in the wedding? For example, are you the bride, groom, best man, or someone else?”).
+o	User Input: Text (e.g., “I’m the maid of honor”) or audio (e.g., user records “I’m the maid of honor”).
+o	Validation: Ensures a non-empty response (text or audio). If unclear, the assistant asks for clarification (e.g., “Thanks! Just to confirm, are you a speaker at the wedding?”).
+o	Storage: The role is saved for use in speech customization.
+2.	Wedding Date: 
+o	Question: A prompt to collect the wedding date (e.g., “When is the wedding?”).
+o	User Input: Text (e.g., “June 15, 2025”) or audio (e.g., user says “Next month”).
+o	Validation: Parses the input (text or transcribed audio) to extract a date. If ambiguous (e.g., “Soon”), prompts for clarification (e.g., “Could you share the specific date or month?”).
+o	Storage: The date is saved (as a string or parsed date object) for context in later modules.
+3.	Speech Length Recommendations: 
+o	Assistant Action: Based on the user’s role, the assistant provides a recommended speech length and seeks confirmation or alternative preference. 
+	Logic: Predefined guidelines, e.g.: 
+	Bride/Groom: 3-5 minutes.
+	Best Man/Maid of Honor: 4-6 minutes.
+	Parent: 2-4 minutes.
+	Other roles: 2-5 minutes (default).
+	Message: Example: “As the best man, I’d recommend a speech of 4-6 minutes—it’s perfect for sharing stories and keeping everyone engaged. Does that sound good, or do you have something else in mind?”
+	User Input: Text or audio response (e.g., “Sounds good” or “I’d prefer 3 minutes”).
+	Validation: If the user specifies a different length, that preference is saved; otherwise, the recommendation is used.
+o	Storage: The confirmed or user-specified length is saved (e.g., “3 minutes” or “4-6 minutes”) for Module 3.
+4.	Style Preferences: 
+o	Question: A prompt to gauge the user’s preferred speech style (e.g., “What kind of speech are you imagining? For example, are you outgoing and want something fun, or do you prefer something heartfelt and formal?”).
+o	User Input: 
+	Text (e.g., “I’m outgoing, so I want it fun!”) or audio (e.g., user says “Something fun”).
+	Optionally, predefined options (e.g., buttons for “Fun,” “Heartfelt,” “Formal,” “Mix”) to simplify input, depending on implementation.
+o	Validation: Ensures a non-empty response. If vague, prompts for more detail (e.g., “Got it! By fun, do you mean humorous or lighthearted?”).
+o	Storage: The style preference is saved (e.g., as a string or category like “fun,” “heartfelt”).
+5.	Transition to Content Collection: 
+o	Message: After collecting the above information, the assistant prompts to begin gathering content (e.g., “Brilliant! Are we ready to start on the actual content?”).
+o	User Input: A simple confirmation via text (e.g., “Yes”), audio (e.g., user says “Yes”), or a button (e.g., “Let’s Go”).
+o	Behavior: If the user confirms positively (e.g., “Yes”), the assistant proceeds to the content collection questions (below). If the response is negative or unclear, the assistant prompts again (e.g., “No worries! Let me know when you’re ready.”).
+6.	Content Collection (User Stories and Anecdotes): 
+o	Assistant Action: The assistant asks a set of conversational questions to collect real user stories and anecdotes, tailored to the user’s role, as if a human writer or close friend were gathering material for the speech. 
+	Logic: Questions are role-specific, based on the user’s role from step 1. A specific list of questions is pending, but examples include: 
+	For a sibling: “Tell me a story from when you were kids.”
+	For bride/groom: “Tell me a fun fact or a good story about when you met or the first dates you went on.”
+	For other roles (e.g., best man): Generic prompts like “Share a memorable moment you had with the couple.”
+	Number of Questions: At least 2-3 questions to gather sufficient content, asked one at a time with a back-and-forth flow (assistant asks, user responds, assistant acknowledges and asks the next).
+	Message Style: Warm and engaging, e.g., “Oh, I bet you’ve got some great memories! Tell me a story from when you were kids,” followed by an acknowledgment like “That’s amazing! How about another moment that stands out?”
+o	User Input: Text or audio response, allowing detailed stories (e.g., “We used to build forts in the backyard…” or a recorded anecdote).
+o	Validation: Ensures a non-empty response. If vague or too brief, prompts for more detail (e.g., “Love that! Can you tell me a bit more about what happened?”).
+o	Storage: Each story/anecdote is saved (as text or transcribed audio) for use in Module 3.
+7.	Transition to Module 3: 
+o	Final Message: After collecting stories, the assistant concludes with a prompt to transition to the next phase (e.g., “Fantastic, we’ve got some great stories to work with! Ready to move on to crafting the speech?”).
+o	User Input: A simple confirmation via text (e.g., “Yes”), audio (e.g., user says “Yes”), or a button (e.g., “Let’s Go”).
+o	Behavior: Upon confirmation, the assistant triggers a navigation event to Module 3 (content creation).
+3.2.3 Outputs
+•	Collected Data: 
+o	A structured dataset containing: 
+	User’s role (string, e.g., “maid of honor”).
+	Wedding date (string or date object, e.g., “2025-06-15”).
+	Confirmed speech length (string, e.g., “3 minutes” or “4-6 minutes”).
+	Style preference (string, e.g., “fun”).
+	Stories/anecdotes (array of strings, e.g., [“We built forts as kids…”, “First date was a disaster…”]).
+•	Chat Log: 
+o	A persistent record of the conversation, including: 
+	Assistant messages (text).
+	User responses (text or audio files with transcriptions).
+o	Displayed in the personal space upon login and updated with new interactions.
+•	Navigation Event: 
+o	User confirmation after content collection triggers a redirect to Module 3 (e.g., /content-creation).
+4. Non-Functional Requirements
+4.1 User Experience (UX)
+•	Conversational Flow: 
+o	The chat feels natural, with short, friendly messages from Ed Davies, like talking to a good friend.
+o	Questions are asked one at a time to avoid overwhelming the user.
+•	Mobile Optimization: 
+o	The personal space and chat interface are touch-friendly, with legible text, easy-to-tap inputs, and playable audio controls.
+o	Messages and audio load instantly, with no noticeable lag.
+•	Clarity: 
+o	Questions are unambiguous, with examples to guide users (e.g., “Are you the bride, groom, best man, or someone else?”).
+o	Responses are flexible, accepting varied input formats (text or audio, e.g., “next month” for date).
+4.2 Performance
+•	Response Time: 
+o	Assistant messages appear instantly (<0.5 seconds) after user input.
+o	Audio uploads and transcriptions complete in <2 seconds (assuming standard server response).
+o	Data storage and validation complete in <1 second.
+•	Load Time: 
+o	Personal space, including past communication, loads in <2 seconds on mobile (4G connection).
+4.3 Reliability
+•	Input Handling: 
+o	Gracefully handles vague or incomplete responses (text or audio) with follow-up questions.
+o	Saves all communication persistently to display upon login.
+•	Audio Support: 
+o	Audio files are stored securely and playable without errors.
+o	Transcriptions are accurate enough to parse key details (e.g., role, date, stories).
+5. Interfaces
+To ensure modularity, this module defines clear inputs and outputs for integration with other parts of the application.
+5.1 Input Interfaces
+•	User Account Data (from Module 1): 
+o	Format: JSON object.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "firstName": "string",
+  "email": "string"
+}
+o	Purpose: Used for the personalized greeting (“Hi [First Name]”) and to associate collected data with the user.
+o	Access: Received via API or session data after login.
+•	Past Communication (from backend): 
+o	Format: Array of message objects.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+[
+  { "sender": "assistant", "text": "Who are you in the wedding?", "timestamp": "string" },
+  { "sender": "user", "text": "I’m the best man", "timestamp": "string" },
+  { "sender": "user", "audio": "url-to-audio-file", "transcription": "string", "timestamp": "string" },
+  ...
+]
+o	Purpose: Displayed in the personal space upon login.
+5.2 Output Interfaces
+•	Collected Speech Data: 
+o	Format: JSON object.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "userId": "string", // Links to user’s email or internal ID
+  "role": "string", // e.g., "maid of honor"
+  "weddingDate": "string", // e.g., "2025-06-15"
+  "confirmedLength": "string", // e.g., "3 minutes" or "4-6 minutes"
+  "stylePreference": "string", // e.g., "fun"
+  "stories": ["string"] // e.g., ["We built forts as kids…", "First date story…"]
+}
+o	Purpose: Passed to Module 3 (content creation) to inform speech generation.
+o	Access: Available via an API endpoint (e.g., POST /api/speech-info) or stored in the backend.
+•	Chat Log: 
+o	Format: Array of message objects.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+[
+  { "sender": "assistant", "text": "Who are you in the wedding?", "timestamp": "string" },
+  { "sender": "user", "text": "I’m the best man", "timestamp": "string" },
+  { "sender": "user", "audio": "url-to-audio-file", "transcription": "string", "timestamp": "string" },
+  ...
+]
+o	Purpose: Stored persistently and displayed in the personal space for all future logins.
+•	Navigation Event: 
+o	Trigger: User confirms readiness after content collection (“Ready to move on?” → “Yes”).
+o	Action: Redirects to Module 3 URL (e.g., /content-creation).
+o	Data: Passes the collected speech data to the next module.
+5.3 External Dependencies
+•	Backend API (assumed): 
+o	Endpoints for: 
+	GET /api/user: Retrieve user data (first name, email).
+	GET /api/chat-history: Retrieve past communication (text and audio).
+	POST /api/speech-info: Store collected speech data.
+	POST /api/audio: Upload and transcribe audio files.
+o	Handles session authentication to secure the personal space.
+•	Module 3 (content creation, not specified): 
+o	Must accept the collected speech data (including stories) as input.
+o	Accessible via a defined URL or route.
+6. Technical Considerations
+These notes guide developers without prescribing implementation details.
+•	Frontend Framework: 
+o	React, Vue.js, or similar for dynamic chat rendering.
+o	State management (e.g., Redux, Vuex) to track chat progress and persist communication history across sessions.
+•	Chat Interface: 
+o	Use WebSocket or polling for real-time feel (optional, depending on backend).
+o	Store messages and audio files in local state during the session, synced with backend.
+•	Input Parsing: 
+o	Basic NLP (e.g., regex or simple libraries like date-fns) for wedding date extraction from text or audio transcriptions.
+o	Predefined role categories (e.g., bride, groom, best man) for validation.
+o	Flexible parsing for stories to capture narrative content without strict formatting.
+•	Audio Handling: 
+o	Use browser APIs (e.g., MediaRecorder) for audio capture.
+o	Store audio files in a CDN or backend with unique URLs.
+o	Integrate a transcription service (e.g., third-party API) for audio responses.
+•	Modularity: 
+o	Encapsulate the personal space as a component (e.g., PersonalSpace.jsx).
+o	Separate the chat logic into a reusable service (e.g., WritingAssistant.js).
+o	Use environment variables for API URLs and Ed Davies’ image URL.
+7. Error Handling
+•	Personal Space: 
+o	Missing user data: Redirect to login (Module 1) with error message (“Please log in”).
+o	Past communication load failure: Display a fallback message (e.g., “Loading history…”).
+o	Page load failure: Display a fallback UI with logout option.
+•	Writing Assistant: 
+o	Empty response (text or audio): Prompt again (e.g., “Could you share your role?”).
+o	Invalid date: Ask for clarification (e.g., “Could you specify the date?”).
+o	Vague story: Prompt for more detail (e.g., “That’s a start! Can you tell me more?”).
+o	Audio upload failure: Show message (e.g., “Audio didn’t upload. Try again or type instead?”).
+o	Server error: Show generic message (e.g., “Oops, something went wrong. Try again?”).
+8. Outputs Summary
+•	Personal Space: 
+o	A responsive webpage (/dashboard) with greeting, past communication (text and audio), and chat interface.
+•	Collected Data: 
+o	JSON object with role, wedding date, confirmed length, style preference, and stories/anecdotes.
+•	Chat Log: 
+o	Persistent record of text messages and audio files, displayed upon login.
+•	Navigation: 
+o	Redirect to Module 3 upon user confirmation after content collection.
+9. Assumptions
+•	Module 1 provides user data (first name, email) and authenticates access.
+•	Module 3 exists to handle content creation and accepts the collected data, including stories.
+•	A backend stores user data, chat history (text and audio), and speech data securely.
+•	An audio transcription service is available for processing audio inputs.
+•	The image of Ed Davies is provided as a static asset (e.g., /assets/ed-davies.jpg).
+•	The specific list of content questions will be provided later; placeholders are used for now.
+•	The chat is sequential (one question at a time), with no branching beyond clarification prompts.
+10. Conclusion
+This specification defines Module 2: Personal Space and Writing Assistant (Info Collection), incorporating the requested addition while preserving all other requirements. It includes a personalized greeting, a chat-based assistant (Ed Davies) with a friendly image in bubbles, support for text and audio input, confirmation of speech length preferences, display of all past communication (text and audio) upon login, and a new step to collect role-specific user stories/anecdotes after confirming readiness. All inputs (user data, chat history), outputs (speech data, chat log, navigation), and interfaces (API payloads, redirects) are specified to ensure modularity and compatibility with Cursor. The module is self-contained, ready to integrate with other modules while allowing easy modifications.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 3 Speech Writing
+Nice. Now moving on to module three, which is the actual speech generation or the speech writing. The speech writing happens in the same space, same personal space, which is unique to each user. So when module two is complete, the assistant gets anecdotes and all sorts of information from the user and is happy with the collected inputs. The speech generation kicks in with something like, nice work, I'm confident I can do a first draft with the lovely input you provided. Is there anything else you would like to add at this point, or shall I start drafting? And don't worry, we can always edit and add or make adjustments later. So this is really just about getting started with the writing. Have you noticed? So yes, after that confirmation from the user, if the answer is positive from the user, do generate a draft speech which is unique to the user For the style of the speech use to start preference indicated by the user And do make sure language is simple and easy to make it easy for people to give to speech No complicated words, no complicated long sentences, just a very easy and intuitive speech. Good checks are Hemingway. You can use Hemingway app for free to make sure sentences are easy to understand and short. You can use George Orwell's rules for effective writing, which also is an excellent check to make writing better. Feel free to use any other writing support you can find on the internet, support in terms of resources to make a speech, an excellent speech. Also please build on all the great information there is around how to structure how to build a good wedding speech including yes what makes a good joke if a user wants something slightly fun and lighthearted or just really good things that can be built into a speech Try it and test it, but do make the speech tailored to each particular user based on the unique input they provided and just really how they interacted with you as the assistant. Then in terms of showing the draft of the speech, do not display the speech in a way that is fully visible or visible to the user. We want to show to the user that a speech for them was created, but we don't want the speech to be openly available just yet. So maybe an idea is to have you know like adding lines to as the speech is being written in the interface but having them blurred so that the user gets a sense of, yes, the speech is generated for him or her at that point. And it's all coming together. And it's basically there, but they just cannot see it yet. They can only see it after successful payment, which is module 4, which we talk about at the moment. But for now, stick to requirements for module 3, which is speech generation or speech writing. And yes, define clear inputs, clear outputs. So we can make changes to this module easily later on. Also for the requirements, keep them concise. No duplication if not necessary. Take all the words you need to explain in a good way, but cut all fluff. We just need a really good two-to-point specification for Module 3 now. Thank you.
+
+Module 3: Speech Generation
+Version: 1.0
+Date: April 13, 2025
+Prepared by: Assistant
+1. Introduction
+This module specifies the requirements for the Speech Generation functionality of the Wedding Speech Writing Assistant. It operates within the user’s personal space, using data collected in Module 2 to generate a unique, tailored wedding speech. The assistant initiates the process with a confirmation prompt, creates a draft speech with simple language and user-specific content, and displays it in a blurred format to indicate completion without revealing the text until payment (Module 4). This module is self-contained, with clear interfaces to ensure modularity and ease of future changes.
+2. Scope
+This specification covers:
+•	The speech generation process within the personal space, including a confirmation prompt.
+•	Creation of a unique draft speech based on user inputs (role, style preference, stories), using simple language and effective writing principles.
+•	Display of the draft in a blurred format to indicate completion without visibility.
+•	All inputs, outputs, and interfaces to support modularity and integration.
+Only the requirements explicitly stated are included, with no assumptions about other modules beyond inputs from Module 2 and transition to Module 4.
+3. Functional Requirements
+3.1 Speech Generation Process
+The speech generation occurs in the user’s personal space (same interface as Module 2), continuing the chat-based interaction with the assistant, Ed Davies.
+3.1.1 Initiation
+•	Prompt: 
+o	After Module 2 completes (all inputs collected), the assistant sends a message in the chat interface: “Nice work, [First Name]! I’m confident I can do a first draft with the lovely input you provided. Is there anything else you’d like to add at this point, or shall I start drafting? Don’t worry, we can always edit and add or make adjustments later.”
+o	Example: “Nice work, John! I’m confident I can do a first draft with the lovely input you provided. Is there anything else you’d like to add at this point, or shall I start drafting? Don’t worry, we can always edit and add or make adjustments later.”
+•	User Input: 
+o	Text or audio response (consistent with Module 2), e.g., “Go ahead” or “Nothing else, start drafting.”
+o	Optionally, a button (e.g., “Start Drafting”) for confirmation.
+•	Behavior: 
+o	If the response is positive (e.g., “Yes,” “Go ahead,” or button click), the assistant proceeds to generate the speech.
+o	If the user provides additional input (e.g., “Add that I met the groom in college”), it’s appended to the stories/anecdotes from Module 2 and saved.
+o	If the response is negative or unclear (e.g., “Not yet”), the assistant prompts again: “No problem! Let me know when you’re ready or if there’s more to share.”
+3.1.2 Speech Generation
+•	Trigger: Positive user confirmation to start drafting.
+•	Process: 
+o	The assistant generates a unique draft speech based on: 
+	Inputs from Module 2: 
+	User’s role (e.g., “maid of honor”).
+	Wedding date (for context, e.g., “this June”).
+	Confirmed speech length (e.g., “3 minutes”).
+	Style preference (e.g., “fun,” “heartfelt”).
+	Stories/anecdotes (e.g., “We built forts as kids”).
+	Any additional input from the initiation prompt.
+	Style: 
+	Matches the user’s style preference (e.g., fun includes light humor, heartfelt emphasizes emotion).
+	If “fun,” incorporates appropriate humor (e.g., a light-hearted anecdote or a tasteful joke, based on best practices for wedding speech humor).
+	Language: 
+	Simple and clear, avoiding complicated words or long sentences.
+	Passes checks inspired by: 
+	Hemingway App: Ensures readability (Grade 6 level or lower), short sentences, minimal adverbs, and active voice.
+	George Orwell’s Rules for Effective Writing: 
+	Avoid overused phrases (e.g., no clichés like “love is a journey”).
+	Use short words where possible (e.g., “happy” over “ecstatic”).
+	Cut unnecessary words (e.g., “very” or “really”).
+	Prefer active voice (e.g., “I saw” over “It was seen by me”).
+	Avoid jargon or foreign phrases.
+	Natural and conversational, as if spoken by the user.
+	Structure: 
+	Follows best practices for wedding speeches (researched from web resources): 
+	Introduction: Welcomes the audience, introduces the speaker’s role (e.g., “Hi everyone, I’m Jane, the maid of honor”).
+	Body: Incorporates user’s stories/anecdotes, tailored to the role and style (e.g., a sibling’s childhood memory or a groom’s first-date story).
+	Conclusion: Ends with a toast or well-wishes (e.g., “To Emma and Jack, here’s to a lifetime of love!”).
+	Length adheres to the confirmed duration (e.g., 3 minutes ≈ 400-500 words at a natural speaking pace).
+	Tailoring: 
+	Unique to the user, weaving in their specific anecdotes and details (e.g., names, events).
+	Reflects the user’s interaction tone (e.g., if they were chatty, the speech feels warm and personal).
+•	Resources: 
+o	Leverages web-based best practices for wedding speeches (e.g., structure tips, humor guidelines).
+o	Ensures jokes (if fun style) are tasteful, avoiding anything offensive or overly niche.
+3.1.3 Draft Display
+•	Format: 
+o	The draft is not fully visible to the user.
+o	Displayed in the personal space’s chat interface as a “preview”: 
+	Text appears as blurred lines (e.g., CSS blur filter or a frosted overlay), simulating a speech’s length and structure.
+	Lines are added progressively (e.g., over 5-10 seconds) to give a sense of the speech being written in real-time.
+	The blurred text indicates the speech is complete but locked until payment (Module 4).
+•	Message: 
+o	After the blurred draft appears, the assistant adds: “Your speech is ready, [First Name]! It’s all set for you, but we’ll need to unlock it to see the full text. Ready to proceed?”
+•	Behavior: 
+o	The blurred draft remains visible in the chat history.
+o	No user interaction with the draft is allowed (e.g., no clicking to reveal).
+o	The assistant awaits navigation to Module 4 (payment).
+3.1.4 Outputs
+•	Draft Speech: 
+o	A text string (e.g., “Hi everyone, I’m Jane… To Emma and Jack!”).
+o	Stored securely in the backend, linked to the user’s account.
+o	Not accessible to the user until Module 4.
+•	Chat Log Update: 
+o	Includes the initiation prompt, user response, and blurred draft preview.
+•	Navigation Event: 
+o	Triggers a redirect to Module 4 (e.g., /payment) after the draft is displayed.
+4. Non-Functional Requirements
+4.1 User Experience (UX)
+•	Seamless Integration: 
+o	Continues in the same personal space as Module 2, maintaining the chat flow.
+o	Blurred draft feels engaging, building anticipation without revealing content.
+•	Mobile Optimization: 
+o	Blurred text and chat interface are clear on small screens.
+o	Progressive line animation is smooth (no lag).
+•	Clarity: 
+o	Prompt is friendly and reassuring, emphasizing flexibility to edit later.
+o	Blurred preview visually indicates a complete speech.
+4.2 Performance
+•	Generation Time: 
+o	Speech is generated in <5 seconds (assuming standard server response).
+•	Display Time: 
+o	Blurred draft animation completes in 5-10 seconds.
+•	Load Time: 
+o	Personal space updates (with draft preview) load in <2 seconds on mobile (4G).
+4.3 Reliability
+•	Data Integrity: 
+o	Speech is saved securely, ensuring no loss before Module 4.
+•	Consistency: 
+o	Blurred preview matches the speech’s actual length/structure.
+5. Interfaces
+5.1 Input Interfaces
+•	User Account Data (from Module 1): 
+o	Format: JSON object.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "firstName": "string",
+  "email": "string"
+}
+o	Purpose: Used for personalization (e.g., “Your speech is ready, [First Name]”).
+•	Collected Speech Data (from Module 2): 
+o	Format: JSON object.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "userId": "string",
+  "role": "string",
+  "weddingDate": "string",
+  "confirmedLength": "string",
+  "stylePreference": "string",
+  "stories": ["string"]
+}
+o	Purpose: Provides all data needed to generate the speech.
+o	Access: Received via API (e.g., GET /api/speech-info).
+5.2 Output Interfaces
+•	Draft Speech: 
+o	Format: JSON object.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "userId": "string",
+  "speechText": "string",
+  "status": "locked"
+}
+o	Purpose: Stored for access in Module 4 after payment.
+o	Access: Saved via API (e.g., POST /api/speech-draft).
+•	Chat Log Update: 
+o	Format: Array of message objects.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+[
+  { "sender": "assistant", "text": "Nice work, [First Name]! ...", "timestamp": "string" },
+  { "sender": "user", "text": "Go ahead", "timestamp": "string" },
+  { "sender": "assistant", "text": "Your speech is ready...", "preview": "blurred", "timestamp": "string" }
+]
+o	Purpose: Appended to the persistent chat history (Module 2).
+•	Navigation Event: 
+o	Trigger: Blurred draft is displayed.
+o	Action: Redirects to Module 4 (e.g., /payment).
+o	Data: Passes user ID to Module 4.
+5.3 External Dependencies
+•	Backend API: 
+o	Endpoints for: 
+	GET /api/user: Retrieve user data.
+	GET /api/speech-info: Retrieve Module 2 data.
+	POST /api/speech-draft: Store draft speech.
+	POST /api/chat-history: Update chat log.
+o	Handles session authentication.
+•	Module 4 (payment, not specified): 
+o	Accepts user ID and unlocks the speech.
+o	Accessible via a defined URL.
+6. Technical Considerations
+•	Frontend: 
+o	Reuse Module 2’s chat interface (e.g., PersonalSpace.jsx).
+o	CSS for blurred text (e.g., filter: blur(5px)).
+o	Animation library (e.g., Framer Motion) for progressive line display.
+•	Speech Generation: 
+o	Template-based or AI-driven (e.g., simple rule-based system or API like GPT with constraints for simplicity).
+o	Integrate Hemingway/Orwell checks via libraries (e.g., write-good for Node.js).
+•	Modularity: 
+o	Encapsulate generation logic in a service (e.g., SpeechGenerator.js).
+o	Use environment variables for API URLs.
+7. Error Handling
+•	Initiation: 
+o	Missing Module 2 data: Prompt user to complete Module 2.
+o	Unclear response: Reprompt (e.g., “Just checking, ready to draft?”).
+•	Generation: 
+o	Failure to generate: Show message (e.g., “Something went wrong. Let’s try again?”).
+•	Display: 
+o	Animation failure: Show static blurred block with message.
+o	Server error: Generic message (e.g., “Oops, try again later”).
+8. Outputs Summary
+•	Draft Speech: 
+o	Unique, locked text stored in backend.
+•	Chat Interface: 
+o	Updated with prompt, user response, and blurred preview.
+•	Navigation: 
+o	Redirect to Module 4.
+9. Assumptions
+•	Module 1 provides user data and authentication.
+•	Module 2 provides complete speech data (role, stories, etc.).
+•	Module 4 handles payment and speech unlocking.
+•	Backend supports secure storage and API endpoints.
+•	Ed Davies’ image is reused from Module 2.
+10. Conclusion
+This specification defines Module 3: Speech Generation, exactly as requested. It includes a confirmation prompt, generation of a unique, simple, and tailored speech within the personal space, and a blurred draft display to indicate completion. Inputs (Module 2 data), outputs (speech, chat log, navigation), and interfaces (API payloads, redirects) ensure modularity and compatibility with Cursor. The module is concise, self-contained, and ready to integrate with Module 4.
+
+
+
+
+
+
+
+
+
+
+
+Module 4 Payment 
+Great, now module four. Module four is payment. So once the speech is drafted for a user, and the user gets a feel that it's there, it's a perfect time to ask for payment for the user, basically to unlock the speech and take it from there. So for the payment module, Well, module, serve with something like all done as a confirmation that the speech is created and a nice segue to prompt the user to pay. I'm open to suggestions what the best way is for taking payments. But yes, the user should be able to pay in a very easy way with either a credit card or maybe Apple Pay or Google Pay on their phone. If mobile or desktop, of course, if Ed Davis is accessed on a desktop. But remove all restriction or friction if possible. Make it really easy. Make sure that the user understands it a one payment and it a fixed payment that I will specify Don hard the price but it will be a fixed payment per speech which will always be the same for each user Actually, scrap that. No, it's just a fixed one-off payment per user. I'll define the details on that later. As with the other modules, stick to just that module. It should be modular, so it can be easily changed later on independently of the others. But yes, it kicks in after module three is complete. And next steps will be module five, which will be the refinement of the draft after the payment has gone through. So yes, maybe still part of module four, which we're talking about here is once payment is done and successful, redirect or bring the user back into the interface, the personal space. With the speech, which is the output from module three, draft now visible to the user. Thanks.
+
+Thanks for pointing that out. You're right—my specification for Module 4 included some technical details (like references to PaymentService.js or Stripe Elements) that lean toward implementation rather than pure requirements. For a functional specification meant for Cursor, we should focus solely on what the module needs to do, not how it’s coded. Those details are better left to Cursor or the development phase.
+Below is a revised version of the Module 4: Payment specification, stripped of any code-specific or implementation details while keeping all the functional and non-functional requirements exactly as you provided. It remains concise, modular, and focused on what’s needed for Cursor to understand the requirements, with no fluff or duplication. The structure and content align with your original request, just cleaner and purely requirement-focused.
+________________________________________
+Functional Specification for Wedding Speech Writing Assistant
+Module 4: Payment
+Version: 1.1
+Date: April 13, 2025
+Prepared by: Assistant
+1. Introduction
+This module specifies the requirements for the Payment functionality of the Wedding Speech Writing Assistant. It activates after Module 3 (speech generation) to prompt the user for a one-off payment to unlock their draft speech. The payment process is simple and frictionless, supporting multiple payment methods. Upon successful payment, the user returns to their personal space with the speech fully visible. This module is self-contained, with clear interfaces to ensure modularity and ease of future changes.
+2. Scope
+This specification covers:
+•	A payment prompt confirming the speech is ready.
+•	An easy payment process with credit card, Apple Pay, and Google Pay options.
+•	Return to the personal space with the unlocked speech after payment.
+•	All inputs, outputs, and interfaces for modularity.
+Only the stated requirements are included, with no details about Module 5 beyond the transition.
+3. Functional Requirements
+3.1 Payment Process
+The payment process occurs in the user’s personal space, using the same chat interface as Modules 2-3, with the assistant, Ed Davies.
+3.1.1 Payment Prompt
+•	Trigger: After Module 3 displays the blurred draft speech.
+•	Message: 
+o	The assistant sends: “All done, [First Name]! Your speech is ready to go. Just one quick step to unlock it with a one-off payment, and you’ll see the full text. Ready to proceed?”
+o	Example: “All done, John! Your speech is ready to go. Just one quick step to unlock it with a one-off payment, and you’ll see the full text. Ready to proceed?”
+•	Details: 
+o	Clearly states it’s a single, fixed payment per user (price TBD).
+o	No recurring or variable fees.
+•	User Response: 
+o	Confirmation via: 
+	Text or audio (e.g., “Yes,” “Let’s do it”).
+	A button (e.g., “Pay Now”).
+•	Behavior: 
+o	Positive response (e.g., “Yes” or button click) opens the payment interface.
+o	Negative or unclear response triggers a follow-up: “No rush, [First Name]! Let me know when you’re ready to unlock your speech.”
+3.1.2 Payment Interface
+•	Access: Opens after positive confirmation, as a modal or new page.
+•	Payment Methods: 
+o	Credit Card: Accepts major cards (e.g., Visa, Mastercard).
+o	Apple Pay: Available on supported devices (mobile or desktop).
+o	Google Pay: Available on supported devices (mobile or desktop).
+•	Features: 
+o	Displays “One-Time Payment” with a placeholder price (TBD).
+o	Minimizes user input (e.g., only essential card details or one-tap for Apple/Google Pay).
+o	Auto-prioritizes Apple Pay/Google Pay on compatible devices.
+•	Design: 
+o	Simple, with clear instructions and minimal fields.
+o	Mobile-friendly: Large buttons, easy-to-use inputs.
+o	Desktop-compatible: Clean layout for larger screens.
+•	Validation: 
+o	Checks for valid card details or payment method errors.
+o	Shows clear error messages (e.g., “Invalid card number”).
+3.1.3 Payment Confirmation
+•	Success: 
+o	Payment is processed securely.
+o	The speech (from Module 3) is unlocked.
+o	User returns to the personal space.
+o	The chat interface shows: 
+	The full, unblurred speech text.
+	A message: “Here’s your speech, [First Name]! It’s all yours now. Ready to take a look?”
+•	Failure: 
+o	Displays an error (e.g., “Payment didn’t go through. Try again?”).
+o	Allows retry with any payment method.
+•	Return: 
+o	Successful payment automatically returns to the personal space with the visible speech.
+3.1.4 Outputs
+•	Payment Record: 
+o	Stores: 
+	User ID.
+	Amount (TBD).
+	Timestamp.
+	Status (success/failed).
+•	Unlocked Speech: 
+o	The Module 3 speech, now visible in the chat interface.
+•	Chat Log Update: 
+o	Adds the prompt, user response, and (on success) the unblurred speech.
+•	Navigation: 
+o	Redirect to personal space after success.
+4. Non-Functional Requirements
+4.1 User Experience
+•	Simplicity: 
+o	Payment takes <30 seconds for Apple/Google Pay, <1 minute for credit card.
+o	Clear wording emphasizes one-time payment.
+•	Mobile-Friendly: 
+o	Easy to use on small screens, with large buttons.
+o	Prioritizes mobile payment methods when available.
+•	Transparency: 
+o	No hidden fees or extra steps.
+o	Users feel secure with clear confirmation.
+4.2 Performance
+•	Speed: 
+o	Payment processing completes in <2 seconds.
+o	Return to personal space in <1 second.
+•	Load: 
+o	Payment interface appears in <1 second on mobile (4G).
+4.3 Security
+•	Transactions: 
+o	Processed securely via a trusted provider.
+o	No payment details stored after completion.
+•	Data: 
+o	User and speech data remain protected.
+5. Interfaces
+5.1 Input Interfaces
+•	User Account Data (from Module 1): 
+o	Format: JSON.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "firstName": "string",
+  "email": "string"
+}
+o	Purpose: Personalizes the prompt.
+•	Draft Speech (from Module 3): 
+o	Format: JSON.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "userId": "string",
+  "speechText": "string",
+  "status": "locked"
+}
+o	Purpose: Identifies the speech to unlock.
+5.2 Output Interfaces
+•	Payment Record: 
+o	Format: JSON.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "userId": "string",
+  "paymentId": "string",
+  "amount": "number", // TBD
+  "status": "success" | "failed",
+  "timestamp": "string"
+}
+o	Purpose: Tracks the transaction.
+•	Unlocked Speech: 
+o	Format: JSON.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "userId": "string",
+  "speechText": "string",
+  "status": "unlocked"
+}
+o	Purpose: Displays the speech in the personal space.
+•	Chat Log Update: 
+o	Format: JSON array.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+[
+  { "sender": "assistant", "text": "All done, [First Name]! ...", "timestamp": "string" },
+  { "sender": "user", "text": "Yes", "timestamp": "string" },
+  { "sender": "assistant", "text": "Here’s your speech...", "speechText": "string", "timestamp": "string" }
+]
+o	Purpose: Updates Module 2’s chat history.
+•	Navigation: 
+o	Trigger: Successful payment.
+o	Action: Returns to /dashboard.
+o	Data: Includes user ID and unlocked speech.
+5.3 External Dependencies
+•	Payment System: 
+o	Supports credit card, Apple Pay, Google Pay.
+o	Handles secure transactions.
+•	Backend: 
+o	Stores user data, speech, payment records.
+o	Manages authentication.
+•	Module 5: 
+o	Accesses the unlocked speech via personal space.
+6. Error Handling
+•	Prompt: 
+o	Unclear response: “Just checking, ready to pay?”
+•	Payment: 
+o	Invalid input: “Please check your details.”
+o	Declined: “Payment didn’t work. Try another method?”
+o	Failure: “Something went wrong. Try again?”
+•	Return: 
+o	Failed redirect: Shows error in personal space.
+7. Outputs Summary
+•	Payment Record: Transaction details.
+•	Unlocked Speech: Visible in chat interface.
+•	Chat Log: Updated with payment interaction.
+•	Navigation: Return to personal space.
+8. Assumptions
+•	Modules 1-3 provide user data and draft speech.
+•	Module 5 uses the unlocked speech.
+•	Payment system supports required methods.
+•	Price is fixed, one-off, TBD.
+•	Backend handles secure storage.
+9. Conclusion
+This specification defines Module 4: Payment, focusing on a clear prompt, easy payment options, and return to the personal space with an unlocked speech. Inputs, outputs, and interfaces ensure modularity for Cursor. The module is self-contained and ready for Module 5.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 5 Draft Refinement 
+Last but not least module 5 which is the draft refinement and iterations on the speech until the user is fully satisfied. So this is an iterative process between the user and the assistant. There's no restriction to how many back and forths there are. We keep going until the user is fully, fully happy with the speech. Make sure to be responsive to the user's inputs and drafts and requests and anything they would like to change. So if the changes relate to the entire speech, do change the entire speech. If it's more about a phrase or a paragraph or a section, only change that while keeping everything else. So be really a good listener to what people have to say and incorporate as much feedback as you possibly can to make a speech really work for them and for them to be comfortable with it Follow the same instructions for language and style and style after speech as in other modules. But if a user decides they want to be, let's say, more or less funny or shorter or longer, like if it's new information that contradicts previous information, go with the user want, be and then. So in those cases, you can discard the previous information and go with how the user feels right then. The user is always right, so be positive, be supportive, try and understand and clarify, if not fully clear what the user wants, but go with their instinct and make them happy with their speech until they're fully, fully happy.
+
+
+Functional Specification for Wedding Speech Writing Assistant
+Module 5: Draft Refinement
+Version: 1.3
+Date: April 13, 2025
+Prepared by: Assistant
+1. Introduction
+This module specifies the requirements for the Draft Refinement functionality of the Wedding Speech Writing Assistant. It operates within the user’s personal space, enabling an iterative process where the assistant, Ed Davies, refines the unlocked speech (from Module 4) based on user feedback. The process supports unlimited back-and-forth until the user is fully satisfied, responding to any feedback or changes requested via text or audio, prioritizing the user’s latest preferences, even if they contradict earlier inputs. The module is self-contained, with clear interfaces to ensure modularity and ease of future changes without impacting other modules.
+2. Scope
+This specification covers:
+•	An iterative refinement process in the personal space via the chat interface.
+•	Unlimited back-and-forth to incorporate user feedback, change requests, or additions, using only text or audio input.
+•	Responsiveness to new preferences (e.g., style, length), overriding prior inputs if needed.
+•	Adherence to simple language and user-defined style, with supportive clarification.
+•	All inputs, outputs, and interfaces for modularity.
+Only the stated requirements are included, with no assumptions beyond integration with Modules 1-4.
+3. Functional Requirements
+3.1 Draft Refinement Process
+The refinement process occurs in the user’s personal space, using the same chat interface as Modules 2-4, with the assistant, Ed Davies.
+3.1.1 Initiation
+•	Trigger: Module 4 completes (unlocked speech displayed).
+•	Message: 
+o	The assistant sends: “Here’s your speech, [First Name]! Take a look and let me know what you think. Want to change or add anything? I’m here to make it perfect!”
+o	Example: “Here’s your speech, John! Take a look and let me know what you think. Want to change or add anything? I’m here to make it perfect!”
+•	User Response: 
+o	Provided via: 
+	Text: Typed input (e.g., “Make it funnier”).
+	Audio: Recorded input (e.g., user says “Shorten it”).
+o	Feedback can include: 
+	Change requests or additions, driven by user intent. Examples: rewriting the whole speech (“Start over”), editing a part (“Fix the ending”), tweaking a word (“Say ‘joyful’ instead”), or adding content (“Include our trip story”).
+	New preferences (e.g., “Make it shorter,” “Less funny now”).
+	Satisfaction (e.g., “It’s perfect!”).
+o	Examples are illustrative, not fixed categories; changes depend entirely on the user’s conversational input.
+•	Behavior: 
+o	Feedback with changes/additions triggers refinement (see 3.1.2).
+o	Unclear feedback prompts clarification: “Thanks, [First Name]! Can you share more about what you’d like?”
+o	Satisfaction (e.g., “I’m happy”) ends with: “Awesome, [First Name]! Your speech is all set. Anything else I can help with?”
+3.1.2 Speech Refinement
+•	Process: 
+o	The assistant updates the speech based on user feedback (text or audio), with no limit on iterations.
+o	Scope of Changes: 
+	Fully flexible, driven by user requests. Examples include rewriting the entire speech, editing specific parts, adjusting words, or adding content, but these are illustrative, not fixed types.
+o	Responsiveness: 
+	Incorporates feedback as fully as possible, aligning with user intent.
+	Prioritizes latest preferences if contradictory (e.g., “Now 2 minutes” overrides “4-6 minutes”; “Less funny” overrides “fun”).
+o	Language and Style: 
+	Matches Module 3 guidelines: 
+	Simple, clear language (Grade 6 readability, short sentences, active voice, minimal adverbs).
+	Avoids clichés, uses short words, cuts unnecessary words, prefers active voice, avoids jargon.
+	Natural, conversational, tailored to user’s role and stories.
+	Uses latest style preference (e.g., “fun,” “heartfelt”) or updates if changed (e.g., “Now formal”).
+	Adjusts length if requested (e.g., “Make it 2 minutes”).
+o	Supportive Tone: 
+	Positive, encouraging (e.g., “Great call, let’s make it shorter!”).
+	Clarifies unclear requests: “You want it more heartfelt—any specific vibe in mind?”
+•	Iteration: 
+o	After updating, the assistant shows the revised speech: “Here’s the updated speech, [First Name]! What do you think? Anything more to change or add?”
+o	User responds via text or audio with feedback or approval.
+o	Continues until full satisfaction.
+3.1.3 Completion
+•	Trigger: User confirms full satisfaction (e.g., “It’s perfect”).
+•	Message: 
+o	The assistant confirms: “Fantastic, [First Name]! Your speech is finalized and ready to shine. Anything else I can do?”
+•	Behavior: 
+o	Final speech remains visible in the chat interface.
+o	No further prompts unless user reinitiates.
+3.1.4 Outputs
+•	Refined Speech: 
+o	Text string of the latest or final speech.
+o	Stored securely, linked to user’s account.
+•	Chat Log Update: 
+o	Includes all back-and-forth: feedback, clarifications, drafts.
+•	Final State: 
+o	Speech marked “finalized” in backend on satisfaction.
+4. Non-Functional Requirements
+4.1 User Experience
+•	Responsiveness: 
+o	Feels collaborative, reflecting user input accurately via conversation.
+o	Supportive tone builds confidence.
+•	Mobile-Friendly: 
+o	Chat interface is touch-friendly, with clear draft display.
+•	Flexibility: 
+o	Supports unlimited iterations without restrictions.
+4.2 Performance
+•	Response Time: 
+o	Speech updates generate in <5 seconds.
+•	Load Time: 
+o	Chat interface updates in <1 second on mobile (4G).
+4.3 Reliability
+•	Accuracy: 
+o	Changes align with user requests.
+•	Persistence: 
+o	Drafts and feedback saved, accessible in chat history.
+5. Interfaces
+5.1 Input Interfaces
+•	User Account Data (from Module 1): 
+o	Format: JSON.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "firstName": "string",
+  "email": "string"
+}
+o	Purpose: Personalizes messages.
+•	Unlocked Speech (from Module 4): 
+o	Format: JSON.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "userId": "string",
+  "speechText": "string",
+  "status": "unlocked"
+}
+o	Purpose: Starting point for refinement.
+•	Collected Speech Data (from Module 2, optional): 
+o	Format: JSON.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "userId": "string",
+  "role": "string",
+  "weddingDate": "string",
+  "confirmedLength": "string",
+  "stylePreference": "string",
+  "stories": ["string"]
+}
+o	Purpose: Context if needed.
+5.2 Output Interfaces
+•	Refined Speech: 
+o	Format: JSON.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+{
+  "userId": "string",
+  "speechText": "string",
+  "status": "unlocked" | "finalized"
+}
+o	Purpose: Stores drafts and final version.
+•	Chat Log Update: 
+o	Format: JSON array.
+o	Structure: 
+json
+EinklappenZeilenumbruchKopieren
+[
+  { "sender": "assistant", "text": "Here’s the updated speech...", "speechText": "string", "timestamp": "string" },
+  { "sender": "user", "text": "Make it shorter", "timestamp": "string" },
+  ...
+]
+o	Purpose: Appends to Module 2’s chat history.
+5.3 External Dependencies
+•	Backend: 
+o	Stores user data, drafts, chat history.
+o	Supports data retrieval and updates.
+o	Manages authentication.
+•	Modules 1-4: 
+o	Provide user data, speech, context.
+6. Error Handling
+•	Feedback: 
+o	Unclear input: “Can you clarify what you’d like to change or add?”
+o	No response: Reprompt (e.g., “Still there, [First Name]?”).
+•	Refinement: 
+o	Update failure: “Something went wrong. Let’s try again?”
+o	Misinterpreted request: Clarify (e.g., “Did you mean this part?”).
+•	Display: 
+o	Chat failure: Fallback message (e.g., “Loading draft…”).
+7. Outputs Summary
+•	Refined Speech: Updated or final text.
+•	Chat Log: All feedback and drafts.
+•	Final State: Speech marked “finalized” when satisfied.
+8. Assumptions
+•	Modules 1-4 provide user data and unlocked speech.
+•	Backend supports unlimited draft storage.
+•	Feedback is processed sequentially.
+9. Conclusion
+This specification defines Module 5: Draft Refinement, enabling unlimited conversational iterations via text or audio, with flexible changes/additions based on user intent (illustrated by examples like rewriting, editing, or adding content). It prioritizes user preferences, maintains simple style, and ensures modularity for Cursor without affecting other modules.
+
+
+

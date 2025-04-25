@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Speech</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="pill-styles.css?v=2.1">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="chat-header">
+            <h1 class="header-title">Your Speech</h1>
+            <div id="user-profile-container" class="user-profile-mini"></div>
+            <button id="logout-btn" class="logout-btn">Logout</button>
+        </header>
+
+        <main class="chat-container">
+            <div id="auth-required-message" class="auth-required hidden">
+                <h2>Authentication Required</h2>
+                <p>Please log in to access your dashboard.</p>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <a href="register.html" class="btn btn-outline">Register</a>
+            </div>
+            
+            <div id="dashboard-content" class="dashboard-content hidden">
+                <div class="chat-messages">
+                    <!-- Messages will be dynamically inserted here -->
+                </div>
+            
+                <footer class="chat-input-area">
+                    <div class="chat-input-box">
+                        <textarea class="chat-input" placeholder="Type your message..." rows="1"></textarea>
+                        <button class="chat-submit-button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script type="module">
+        import { initAuth, getCurrentUser } from './js/auth/auth-ui.js';
+        import { initChatTranscription } from './js/transcription/chat-transcription-integration.js';
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Initialize authentication
+            initAuth();
+            
+            // Check if user is logged in
+            const authRequired = document.getElementById('auth-required-message');
+            const dashboardContent = document.getElementById('dashboard-content');
+            
+            const { success, user } = await getCurrentUser();
+            
+            if (success && user) {
+                // User is logged in, show dashboard
+                authRequired.classList.add('hidden');
+                dashboardContent.classList.remove('hidden');
+                
+                // Initialize the speech recognition integration
+                const inputBox = document.querySelector('.chat-input-box');
+                const chatInput = document.querySelector('.chat-input');
+                
+                if (inputBox && chatInput) {
+                    try {
+                        // Initialize with the container and input element
+                        const transcriptionResult = await initChatTranscription({
+                            container: inputBox,
+                            inputElement: chatInput,
+                            onTranscript: (data) => {
+                                console.log('Transcription completed:', data);
+                                // Can handle additional logic here if needed
+                            },
+                            onStatusChange: (status) => {
+                                console.log('Transcription status:', status);
+                                // Can handle status changes here if needed
+                            }
+                        });
+                        
+                        console.log('Transcription integration initialized:', transcriptionResult);
+                    } catch (error) {
+                        console.error('Failed to initialize transcription:', error);
+                    }
+                }
+            } else {
+                // User is not logged in, show auth required message
+                authRequired.classList.remove('hidden');
+                dashboardContent.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html> 
